@@ -15,6 +15,6 @@ public class SimulationPretEntity {
     @OneToMany
     private Set<OffreImmobilierEntity> offreImmobilierEntity;
     @OneToOne
-    private SuivieDemandeEntity suivieDemande;
+    private SuivieDemandeEntity suivieDemandeEntity;
 
 }
