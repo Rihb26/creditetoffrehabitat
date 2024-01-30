@@ -15,14 +15,14 @@ public class ClientEntity {
     private String password;
 
     @OneToMany(mappedBy = "client")
-    private Set<SimulationPret> simulationPrets;
+    private Set<SimulationPretEntity> simulationPrets;
 
     @ManyToMany
     @JoinTable(
             name = "client_nouveaute_banque",
             joinColumns = @JoinColumn(name = "client_id"),
             inverseJoinColumns = @JoinColumn(name = "nouveaute_banque_id"))
-    private Set<NouveauteBanque> nouveauteBanques;
+    private Set<NouveauteBanqueEntity> nouveauteBanques;
 
     public void setId(Long id) {
         this.id = id;
