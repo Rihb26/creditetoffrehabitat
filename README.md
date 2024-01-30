@@ -10,3 +10,6 @@
 ![classDiagram](./src/main/resources/assets/Class%20Diagram%20credit%20offre%20habitat.png)
 
 
+![classDiagram](./src/main/resources/assets/Class%20Diagram%20credit%20offre%20habitat.png)
+
+
