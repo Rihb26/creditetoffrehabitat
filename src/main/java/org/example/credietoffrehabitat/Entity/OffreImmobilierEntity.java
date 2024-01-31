@@ -9,7 +9,6 @@ public class OffreImmobilierEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String typeBien;
     private String adresse ;
     private String prix;
