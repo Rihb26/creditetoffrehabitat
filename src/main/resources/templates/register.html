@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Registration and Login System</title>
@@ -39,69 +37,34 @@
                 </div>
             </div>
             <div class="card-body">
-                <form
-                        method="post"
-                        role="form"
-                        th:action="@{/register/save}"
-                        th:object="${client}"
-                >
+                <form method="post" role="form" th:action="@{/register/save}" th:object="${client}">
                     <div class="form-group mb-3">
                         <label class="form-label">First Name</label>
-                        <input
-                                class="form-control"
-                                id="firstName"
-                                name="firstName"
-                                placeholder="Enter first name"
-                                th:field="*{firstName}"
-                                type="text"
-                        />
-                        <p th:errors = "*{firstName}" class="text-danger"
-                           th:if="${#fields.hasErrors('firstName')}"></p>
+                        <input class="form-control" id="firstName" name="firstName" placeholder="Enter first name" th:field="*{firstName}" type="text" />
+                        <p th:errors="*{firstName}" class="text-danger" th:if="${#fields.hasErrors('firstName')}"></p>
                     </div>
 
                     <div class="form-group mb-3">
                         <label class="form-label">Last Name</label>
-                        <input
-                                class="form-control"
-                                id="lastName"
-                                name="lastName"
-                                placeholder="Enter last name"
-                                th:field="*{lastName}"
-                                type="text"
-                        />
-                        <p th:errors = "*{lastName}" class="text-danger"
-                           th:if="${#fields.hasErrors('lastName')}"></p>
+                        <input class="form-control" id="lastName" name="lastName" placeholder="Enter last name" th:field="*{lastName}" type="text" />
+                        <p th:errors="*{lastName}" class="text-danger" th:if="${#fields.hasErrors('lastName')}"></p>
                     </div>
 
                     <div class="form-group mb-3">
                         <label class="form-label">Email</label>
-                        <input
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="Enter email address"
-                                th:field="*{email}"
-                                type="email"
-                        />
-                        <p th:errors = "*{email}" class="text-danger"
-                           th:if="${#fields.hasErrors('email')}"></p>
+                        <input class="form-control" id="email" name="email" placeholder="Enter email address" th:field="*{email}" type="email" />
+                        <p th:errors="*{email}" class="text-danger" th:if="${#fields.hasErrors('email')}"></p>
                     </div>
 
                     <div class="form-group mb-3">
                         <label class="form-label">Password</label>
-                        <input
-                                class="form-control"
-                                id="password"
-                                name="password"
-                                placeholder="Enter password"
-                                th:field="*{password}"
-                                type="password"
-                        />
-                        <p th:errors = "*{password}" class="text-danger"
-                           th:if="${#fields.hasErrors('password')}"></p>
+                        <input class="form-control" id="password" name="password" placeholder="Enter password" th:field="*{password}" type="password" />
+                        <span id="passwordError" style="display: none; color: red;"></span>
+                        <p th:errors="*{password}" class="text-danger"></p>
                     </div>
+
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">Register</button>
+                        <button class="btn btn-primary" type="submit" onclick="return validatePassword()">Register</button>
                         <span>Already registered? <a th:href="@{/login}">Login here</a></span>
                     </div>
                 </form>
@@ -109,5 +72,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    function validatePassword() {
+        var password = document.getElementById("password").value;
+        var passwordError = document.getElementById("passwordError");
+
+        var passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{5,}$/;
+
+        if (!passwordPattern.test(password)) {
+            passwordError.innerHTML = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character, and have at least 5 characters";
+            passwordError.style.display = "block";
+            return false; // Empêche la soumission du formulaire
+        } else {
+            passwordError.style.display = "none";
+            return true; // Autorise la soumission du formulaire
+        }
+    }
+</script>
+
 </body>
 </html>
