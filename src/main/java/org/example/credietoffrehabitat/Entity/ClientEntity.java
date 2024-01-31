@@ -4,11 +4,18 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="Users")
-public class User {
+@Table(name="clients")
+public class ClientEntity {
     private static final long serialVersionUID = 1L;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
 
     public Long getId() {
         return id;
@@ -50,10 +57,6 @@ public class User {
         this.roles = roles;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(nullable=false)
     private String name;
 
@@ -69,4 +72,14 @@ public class User {
             joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
             inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
     private List<Role> roles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "client")
+    private Set<SimulationPretEntity> simulationPrets;
+
+    @ManyToMany
+    @JoinTable(
+            name = "client_nouveaute_banque",
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "nouveaute_banque_id"))
+    private Set<NouveauteBanqueEntity> nouveauteBanques;
 }

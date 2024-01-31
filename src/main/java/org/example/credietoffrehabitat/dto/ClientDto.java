@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class UserDto {
+public class ClientDto {
     private Long id;
     @NotEmpty
     private String firstName;

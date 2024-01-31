@@ -1,8 +1,8 @@
 package org.example.credietoffrehabitat.security;
 
+import org.example.credietoffrehabitat.Entity.ClientEntity;
 import org.example.credietoffrehabitat.Entity.Role;
-import org.example.credietoffrehabitat.Entity.User;
-import org.example.credietoffrehabitat.Repository.UserRepository;
+import org.example.credietoffrehabitat.Repository.ClientEntityRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,21 +14,21 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomUserDetailsService  implements UserDetailsService {
-    private UserRepository userRepository;
+public class CustomClientDetailsService implements UserDetailsService {
+    private ClientEntityRepository clientEntityRepository;
 
-    public CustomUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public CustomClientDetailsService(ClientEntityRepository clientEntityRepository) {
+        this.clientEntityRepository = clientEntityRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
+        ClientEntity clientEntity = clientEntityRepository.findByEmail(email);
 
-        if (user != null) {
-            return new org.springframework.security.core.userdetails.User(user.getEmail(),
-                    user.getPassword(),
-                    mapRolesToAuthorities(user.getRoles()));
+        if (clientEntity != null) {
+            return new org.springframework.security.core.userdetails.User(clientEntity.getEmail(),
+                    clientEntity.getPassword(),
+                    mapRolesToAuthorities(clientEntity.getRoles()));
         }else{
             throw new UsernameNotFoundException("Invalid username or password.");
         }

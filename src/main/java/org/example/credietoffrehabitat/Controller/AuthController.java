@@ -1,9 +1,9 @@
 package org.example.credietoffrehabitat.Controller;
 
 import jakarta.validation.Valid;
-import org.example.credietoffrehabitat.Entity.User;
-import org.example.credietoffrehabitat.Service.UserService;
-import org.example.credietoffrehabitat.dto.UserDto;
+import org.example.credietoffrehabitat.Entity.ClientEntity;
+import org.example.credietoffrehabitat.Service.ClientService;
+import org.example.credietoffrehabitat.dto.ClientDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,10 +16,10 @@ import java.util.List;
 @Controller
 public class AuthController {
 
-    private UserService userService;
+    private ClientService clientService;
 
-    public AuthController(UserService userService) {
-        this.userService = userService;
+    public AuthController(ClientService clientService) {
+        this.clientService = clientService;
     }
 
     // handler method to handle home page request
@@ -38,36 +38,36 @@ public class AuthController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         // create model object to store form data
-        UserDto user = new UserDto();
-        model.addAttribute("user", user);
+        ClientDto clientEntity = new ClientDto();
+        model.addAttribute("client", clientEntity);
         return "register";
     }
 
     // handler method to handle user registration form submit request
     @PostMapping("/register/save")
-    public String registration(@Valid @ModelAttribute("user") UserDto userDto,
+    public String registration(@Valid @ModelAttribute("user") ClientDto clientDto,
                                BindingResult result,
                                Model model){
-        User existingUser = userService.findUserByEmail(userDto.getEmail());
+        ClientEntity existingClientEntity = clientService.findUserByEmail(clientDto.getEmail());
 
-        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+        if(existingClientEntity != null && existingClientEntity.getEmail() != null && !existingClientEntity.getEmail().isEmpty()){
             result.rejectValue("email", null,
                     "There is already an account registered with the same email");
         }
 
         if(result.hasErrors()){
-            model.addAttribute("user", userDto);
+            model.addAttribute("user", clientDto);
             return "/register";
         }
 
-        userService.saveUser(userDto);
+        clientService.saveUser(clientDto);
         return "redirect:/register?success";
     }
 
     // handler method to handle list of users
     @GetMapping("/users")
     public String users(Model model){
-        List<UserDto> users = userService.findAllUsers();
+        List<ClientDto> users = clientService.findAllUsers();
         model.addAttribute("users", users);
         return "users";
     }
