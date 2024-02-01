@@ -12,4 +12,12 @@
 
 ![classDiagram](./src/main/resources/assets/ClassDiagram2credithabitat.png)
 
+#Architecture Diagram
+
+![architectureDiagram](./src/main/resources/assets/DiagramArchitecture-COH.png).
+
+#Deployment Diagram
+
+![deployment Diagram](./src/main/resources/assets/DiagramDeploiement.png).
+
 
