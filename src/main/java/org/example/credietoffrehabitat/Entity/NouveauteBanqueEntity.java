@@ -5,10 +5,10 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.Set;
 @Entity
+@Table(name = "nouveauteBanque")
 public class NouveauteBanqueEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
     private String image;
     private Date datePublication;
