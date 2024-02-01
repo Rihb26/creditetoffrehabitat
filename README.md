@@ -18,6 +18,6 @@
 
 #Deployment Diagram
 
-![deployment Diagram](./src/main/resources/assets/DiagramDeploiement.png).
+![deploymentDiagram](./src/main/resources/assets/DiagrammeDeploiement.png).
 
 
