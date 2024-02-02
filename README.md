@@ -26,7 +26,7 @@
 
 #Sequence Login Diagram
 
-![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceLogin.png).
+![deploymentDiagram](./src/main/resources/assets/DiagramSequenceLogin-COH.png).
 
 #Sequence Nouveautés Banque et Offres Immobilières Diagram
 
