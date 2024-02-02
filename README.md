@@ -26,10 +26,10 @@
 
 #Sequence Login Diagram
 
-![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceLogin-COH.png).
+![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceLogin.png).
 
 #Sequence Nouveautés Banque et Offres Immobilières Diagram
 
-![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceNB&OI-COH.png).
+![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceNB&OI.png).
 
 
