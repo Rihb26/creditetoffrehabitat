@@ -1,5 +1,7 @@
 package org.example.credietoffrehabitat.Controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import jakarta.validation.Valid;
 import org.example.credietoffrehabitat.Entity.NouveauteBanqueEntity;
 import org.example.credietoffrehabitat.Service.NouveauteBanqueService;
@@ -8,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController
-@RequestMapping(value = "/nouveaute-banque")
+@Controller
+@RequestMapping(value = "/nouveauteBanque")
 
 public class NouveauteBanqueController {
 
@@ -31,7 +33,9 @@ public class NouveauteBanqueController {
     }
 
     @GetMapping(value = "/findAll")
-    public List<NouveauteBanqueEntity> findNouveauteBanque() {
-           return nouveauteBanqueService.findAll();
+    public  String findNouveauteBanque(Model model) {
+        List<NouveauteBanqueEntity> nouveautes = nouveauteBanqueService.findAll();
+        model.addAttribute("nouveautes", nouveautes);
+        return "nouveauteBanque";
     }
 }

@@ -28,8 +28,8 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/nouveaute-banque/add").permitAll()
-                                .requestMatchers("/nouveaute-banque/findAll").permitAll()
+                        authorize.requestMatchers("/nouveauteBanque/add").permitAll()
+                                .requestMatchers("/nouveauteBanque/findAll").permitAll()
                                 .requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
@@ -37,7 +37,7 @@ public class SpringSecurity {
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                                .defaultSuccessUrl("/nouveaute-banque/findAll")
+                                .defaultSuccessUrl("/nouveauteBanque/findAll")
                                 .permitAll()
                 ).logout(
                         logout -> logout

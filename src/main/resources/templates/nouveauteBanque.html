@@ -8,33 +8,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-
 <div class="container">
     <h2>Liste des Nouveautés Bancaires</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Description</th>
-            <!-- Ajoutez ici d'autres colonnes si nécessaire -->
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="nouveaute : ${nouveautes}">
-            <td th:text="${nouveaute.id}">ID</td>
-            <td th:text="${nouveaute.nom}">Nom</td>
-            <td th:text="${nouveaute.description}">Description</td>
-            <!-- Ajoutez ici d'autres colonnes si nécessaire -->
-        </tr>
-        </tbody>
-    </table>
+    <div class="card-deck">
+        <div th:each="nouveaute : ${nouveautes}" class="card">
+            <img th:src="${nouveaute.image}" class="card-img-top" alt="Nouveauté Image">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${nouveaute.titre}">Titre</h5>
+                <p class="card-text" th:text="${nouveaute.contenu}">Contenu</p>
+                <p class="card-text"><small class="text-muted" th:text="${nouveaute.auteur}">Auteur</small></p>
+                <!-- Ajoutez ici d'autres informations si nécessaire -->
+            </div>
+        </div>
+    </div>
 </div>
-
 <!-- jQuery, Popper.js, Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
 </html>
