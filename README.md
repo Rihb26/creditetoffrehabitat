@@ -20,4 +20,16 @@
 
 ![deploymentDiagram](./src/main/resources/assets/DiagramDeployment-COH.png).
 
+#Sequence Inscription Diagram
+
+![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceInscription.png).
+
+#Sequence Login Diagram
+
+![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceLogin-COH.png).
+
+#Sequence Nouveautés Banque et Offres Immobilières Diagram
+
+![deploymentDiagram](./src/main/resources/assets/DiagrammeSequenceNB&OI-COH.png).
+
 
