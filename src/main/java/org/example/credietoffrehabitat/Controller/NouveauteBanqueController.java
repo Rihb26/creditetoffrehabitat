@@ -4,12 +4,9 @@ import jakarta.validation.Valid;
 import org.example.credietoffrehabitat.Entity.NouveauteBanqueEntity;
 import org.example.credietoffrehabitat.Service.NouveauteBanqueService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
-import java.awt.*;
 
 @RestController
 @RequestMapping(value = "/nouveaute-banque")
@@ -31,5 +28,10 @@ public class NouveauteBanqueController {
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Une erreur s'est produite lors de l'ajout de la nouveauté bancaire");
         }
+    }
+
+    @GetMapping(value = "/findAll")
+    public List<NouveauteBanqueEntity> findNouveauteBanque() {
+           return nouveauteBanqueService.findAll();
     }
 }

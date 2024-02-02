@@ -15,6 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurity {
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -28,6 +29,7 @@ public class SpringSecurity {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/nouveaute-banque/add").permitAll()
+                                .requestMatchers("/nouveaute-banque/findAll").permitAll()
                                 .requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
