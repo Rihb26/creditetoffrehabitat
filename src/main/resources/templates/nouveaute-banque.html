@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Nouveautés Bancaires</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Liste des Nouveautés Bancaires</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <!-- Ajoutez ici d'autres colonnes si nécessaire -->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="nouveaute : ${nouveautes}">
+            <td th:text="${nouveaute.id}">ID</td>
+            <td th:text="${nouveaute.nom}">Nom</td>
+            <td th:text="${nouveaute.description}">Description</td>
+            <!-- Ajoutez ici d'autres colonnes si nécessaire -->
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- jQuery, Popper.js, Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
